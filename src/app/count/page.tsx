@@ -1,7 +1,7 @@
 'use client'
 
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useCallback, useEffect, useState } from 'react';
+import { Suspense, useCallback, useEffect, useState } from 'react';
 
 import { Button } from "@/components/ui/button";
 import CellGrid from '../../components/shared/CellGrid';
@@ -61,6 +61,7 @@ export default function Count() {
   };
 
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <div className="container mx-auto p-4">
       <div className="flex-col justify-between items-center mb-4 xl:flex xl:flex-row">
         <div className="mb-5">
@@ -83,5 +84,6 @@ export default function Count() {
         onOpenChange={setShowModal}
       />
     </div>
+    </Suspense>
   );
 }
